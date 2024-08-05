@@ -1,0 +1,44 @@
+name: 'replace string in file'
+description: 'Replace string in file'
+inputs:
+  path:  # id of input
+    description: 'File path'
+    required: true
+  oldString:
+    description: 'The regex of old string, which should be replaced'
+    required: true
+  oldStringWin:
+    description: 'The regex of old string in windows, if it existed, it will be used instead of oldString'
+    required: false
+    default: ''
+  oldStringLinux:
+    description: 'The regex of old string in linux, if it existed, it will be used instead of oldString'
+    required: false
+    default: ''
+  newString:
+    description: 'Replace old string to this string'
+    required: true
+    default: ''
+  newStringWin:
+    description: 'The new string in windows, if it existed, it will be used to replace old string instead of newString'
+    required: false
+    default: 'nullForStringInAction'
+  newStringLinux:
+    description: 'The new in linux, if it existed, it will be used to replace old string instead of newString'
+    required: false
+    default: 'nullForStringInAction'
+  showFileContent:
+    description: 'Print out file content after replacement'
+    required: false
+    default: false
+  regexOptions:
+    description: 'Regex options of oldString regex'
+    required: false
+    default: 'g'
+  escapeBackslash:
+    description: 'Escape backslash ( \ -> \\ in win and \ -> / )'
+    required: false
+    default: false
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
